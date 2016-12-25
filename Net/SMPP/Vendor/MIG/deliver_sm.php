@@ -9,7 +9,7 @@
  */
 
 // Place includes, constant defines and $_GLOBAL settings here.
-require_once 'Net/SMPP/Command/deliver_sm.php';
+require_once __DIR__.'/../../../../Net/SMPP/Command/deliver_sm.php';
 
 
 class Net_SMPP_Command_Vendor_MIG_deliver_sm extends Net_SMPP_Command_deliver_sm {

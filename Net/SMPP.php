@@ -62,7 +62,7 @@ class Net_SMPP
      * @access  protected
      * @static  $sequence  Last used sequence number
      */
-    function nextSeq()
+    public static function nextSeq()
     {
         static $sequence;
         if (!isset($sequence)) {
@@ -84,9 +84,9 @@ class Net_SMPP
      * @see     Net_SMPP_PDU::factory()
      * @static
      */
-    function PDU($command, $args = array())
+    public static function PDU($command, $args = array())
     {
-        require_once 'Net/SMPP/PDU.php';
+        require_once __DIR__.'/../Net/SMPP/PDU.php';
         return Net_SMPP_PDU::factory($command, $args);
     }
 
@@ -96,9 +96,9 @@ class Net_SMPP
      * @param   string  $data  Raw (binary) PDU data
      * @return  object  Net_SMPP_Command_* instance
      */
-    function &parsePDU($data)
+    public static function &parsePDU($data)
     {
-        require_once 'Net/SMPP/PDU.php';
+        require_once __DIR__.'/../Net/SMPP/PDU.php';
         $command = Net_SMPP_PDU::extractCommand($data);
         if ($command === false) {
             return false;

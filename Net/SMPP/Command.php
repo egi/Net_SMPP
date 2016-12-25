@@ -25,7 +25,7 @@
  */
 
 // Place includes, constant defines and $_GLOBAL settings here.
-require_once 'Net/SMPP/PDU.php';
+require_once __DIR__.'/../../Net/SMPP/PDU.php';
 
 // These are the keyvalues for these optional paramaters
 
@@ -177,11 +177,11 @@ class Net_SMPP_Command extends Net_SMPP_PDU
      * @param   array  $args  Values to set
      * @return  void
      * @see     __construct()
-     */
     function Net_SMPP_Command($command, $args = array())
     {
         $this->__construct($command, $args);
     }
+     */
 
     /**
      * 5.x/main constructor
@@ -214,7 +214,7 @@ class Net_SMPP_Command extends Net_SMPP_PDU
      * @param   int    $cmdcode  Command ID
      * @return  mixed  String command name, or false
      */
-    function commandName($cmdcode)
+    public static function commandName($cmdcode)
     {
         $cmds =& Net_SMPP_Command::_commandList();
 
@@ -626,7 +626,7 @@ class Net_SMPP_Command extends Net_SMPP_PDU
      * @access  protected
      * @static
      */
-    function &_commandList()
+    public static function &_commandList()
     {
         static $commands = array(
             'generic_nack'          => 0x80000000,
@@ -668,7 +668,7 @@ class Net_SMPP_Command extends Net_SMPP_PDU
      * @access  protected
      * @static
      */
-     function &_optionalParams()
+     public static function &_optionalParams()
      {
         static $params = array(
             'dest_addr_subunit'           => 0x0005,

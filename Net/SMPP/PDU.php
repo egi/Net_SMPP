@@ -163,9 +163,9 @@ class Net_SMPP_PDU
      * @param   array   $args     Arguments to set in the instance
      * @return  mixed   boolean false or Net_SMPP_Command instance
      */
-    function factory($command, $args = array()) {
+    public static function factory($command, $args = array()) {
         $class = 'Net_SMPP_Command_' . $command;
-        $file = 'Net/SMPP/Command/' . $command . '.php';
+        $file = __DIR__.'/../../Net/SMPP/Command/' . $command . '.php';
 
         include_once $file;
         if (!class_exists($class)) {
@@ -300,7 +300,7 @@ class Net_SMPP_PDU
      * @link    http://atomized.org/2005/04/phps-integer-oddities/
      * @access  private
      */
-    function _unpack($format, $data)
+    public static function _unpack($format, $data)
     {
         $val = array_values(unpack($format, $data));
 
@@ -318,7 +318,7 @@ class Net_SMPP_PDU
      * @param   string  $pdu  Binary PDU data
      * @return  string  PDU command string
      */
-    function extractCommand($pdu)
+    public static function extractCommand($pdu)
     {
         $intcmd = Net_SMPP_PDU::_unpack('N', substr($pdu, 4, 4));
         $intcmd = $intcmd[0];
@@ -356,7 +356,7 @@ class Net_SMPP_PDU
      * @access  private
      * @static
      */
-    function &_statusDescs()
+    public static function &_statusDescs()
     {
         static $descs = array(
             NET_SMPP_ESME_ROK              => 'No Error',

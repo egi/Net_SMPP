@@ -24,7 +24,7 @@
  */
 
 // Place includes, constant defines and $_GLOBAL settings here.
-require_once 'Net/SMPP/Command/data_sm.php';
+require_once __DIR__.'/../../../../Net/SMPP/Command/data_sm.php';
 
 /**
  * mBlox data_sm class

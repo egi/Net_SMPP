@@ -25,7 +25,7 @@
  */
 
 // Place includes, constant defines and $_GLOBAL settings here.
-require_once 'Net/SMPP/Vendor.php';
+require_once __DIR__.'/../../../Net/SMPP/Vendor.php';
 
 /**
  * Possible values for Premium_content_indicator

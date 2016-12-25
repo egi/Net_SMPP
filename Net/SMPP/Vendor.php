@@ -104,13 +104,13 @@ class Net_SMPP_Vendor {
      */
     function __load($vendor)
     {
-        require_once 'Net/SMPP/Command.php';
+        require_once __DIR__.'/../../Net/SMPP/Command.php';
 
         $cmds =& Net_SMPP_Command::_commandList();
         $params =& Net_SMPP_Command::_optionalParams();
         $descs =& Net_SMPP_PDU::_statusDescs();
 
-        $file = 'Net/SMPP/Vendor/' . $vendor . '.php';
+        $file = __DIR__.'/../../Net/SMPP/Vendor/' . $vendor . '.php';
         include_once $file;
         $class = 'Net_SMPP_Vendor_' . $vendor;
         if (!class_exists($class)) {
@@ -145,7 +145,7 @@ class Net_SMPP_Vendor {
      * @since    Net_SMPP 0.4.0
      * @static
      */
-    function &singleton($vendor)
+    public static function &singleton($vendor)
     {
         static $instances = array();
 
@@ -164,9 +164,9 @@ class Net_SMPP_Vendor {
      * @since    Net_SMPP 0.4.0
      * @static
      */
-    function factory($vendor)
+    public static function factory($vendor)
     {
-        $file = 'Net/SMPP/Vendor/' . $vendor . '.php';
+        $file = __DIR__.'/../../Net/SMPP/Vendor/' . $vendor . '.php';
         include_once $file;
         $class = 'Net_SMPP_Vendor_' . $vendor;
         if (!class_exists($class)) {
@@ -184,9 +184,9 @@ class Net_SMPP_Vendor {
      * @param   string   $command  Command to check
      * @return  boolean  true if there's a vendor command, false otherwise
      */
-    function PDUexists($vendor, $command)
+    public static function PDUexists($vendor, $command)
     {
-        $file = 'Net/SMPP/Vendor/' . $vendor . '/'. $command .'.php';
+        $file = __DIR__.'/../../Net/SMPP/Vendor/' . $vendor . '/'. $command .'.php';
        
         $paths = explode(':', get_include_path());
         foreach ($paths as $path) {
@@ -211,7 +211,7 @@ class Net_SMPP_Vendor {
      * @see     Net_SMPP_PDU::factory()
      * @static
      */
-    function PDU($vendor, $command, $args = array())
+    public static function PDU($vendor, $command, $args = array())
     {
         $file = dirname(__FILE__) . '/Vendor/' . $vendor . '/' . $command . '.php';
         $class = 'Net_SMPP_Command_Vendor_' . $vendor . '_' . $command;
@@ -235,7 +235,7 @@ class Net_SMPP_Vendor {
      */
     function &parsePDU($vendor, $data)
     {
-        require_once 'Net/SMPP/PDU.php';
+        require_once __DIR__.'/../../Net/SMPP/PDU.php';
         $command = Net_SMPP_PDU::extractCommand($data);
         if ($command === false) {
             return $false;

@@ -23,7 +23,7 @@
  */
 
 // Place includes, constant defines and $_GLOBAL settings here.
-require_once 'Net/SMPP/Command.php';
+require_once __DIR__.'/../../../Net/SMPP/Command.php';
 
 // Constants for SMPP versions
 define('NET_SMPP_VERSION_33', 0x33);
