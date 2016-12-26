@@ -119,6 +119,21 @@ define('NET_SMPP_GSMFEAT_REPLYPATH',     0x80);
 // Set UDHI and Reply Path (only relevant for GSM network)
 define('NET_SMPP_GSMFEAT_UDHIREPLYPATH', 0xC0);
 
+/**
+ * SMPP v3.4 message state types
+ *
+ * @see  Net_SMPP_Command_Deliver_Sm::$message_state
+ */
+define('NET_SMPP_STATE_SCHEDULED',     0x00);
+define('NET_SMPP_STATE_ENROUTE',       0x01);
+define('NET_SMPP_STATE_DELIVERED',     0x02);
+define('NET_SMPP_STATE_EXPIRED',       0x03);
+define('NET_SMPP_STATE_DELETED',       0x04);
+define('NET_SMPP_STATE_UNDELIVERABLE', 0x05);
+define('NET_SMPP_STATE_ACCEPTED',      0x06);
+define('NET_SMPP_STATE_UNKNOWN',       0x07);
+define('NET_SMPP_STATE_REJECTED',      0x08);
+define('NET_SMPP_STATE_SKIPPED',       0x09);
 
 /**
  * Base Net_SMPP PDU command class
