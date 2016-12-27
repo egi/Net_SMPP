@@ -1,0 +1,25 @@
+{
+    "name": "egi/Net_SMPP",
+    "description": "PSR-4 version of Net_SMPP Pear class",
+    "license": "PHP License v3.0",
+    "keywords": ["smpp"],
+    "authors": [
+        {
+            "name": "Simon Spencer",
+            "email": "silospen@php.net"
+        },
+        {
+            "name": "Agastiya S. Mohammad",
+            "email": "agastiya@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "egi\\Net_SMPP\\": "src"
+        }
+    }
+}
