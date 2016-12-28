@@ -16,3 +16,9 @@ To load this into a project via composer, you can do the following:
   "classmap": [ "vendor/Net_SMPP" ]
   ```
  
+- start using the library in the global namespace
+
+  ```
+  use \Net_SMPP;
+  $pdu = Net_SMPP::PDU('submit_sm');
+  ```
