@@ -107,5 +107,45 @@ class Net_SMPP
         $pdu->parse($data);
         return $pdu;
     }
+
+    public static function respond(Net_SMPP_Command $sm)
+    {
+        $m = self::PDU($sm->command.'_resp', array(
+            'sequence' => $sm->sequence,
+        ));
+        return $m;
+    }
+
+    public static function resend(Net_SMPP_Command_Submit_Sm $sm)
+    {
+        $m = self::PDU('submit_sm', array(
+            // shortcode
+            'source_addr'         => $sm->source_addr,
+            'source_addr_ton'     => NET_SMPP_TON_NWSPEC,
+            'source_addr_npi'     => NET_SMPP_NPI_UNK,
+
+            // 6281xxxx format
+            'destination_addr'    => $sm->destination_addr,
+            'dest_addr_ton'       => NET_SMPP_TON_INTL,
+            'dest_addr_npi'       => NET_SMPP_NPI_ISDN,
+        ));
+        return $m;
+    }
+
+    public static function reply(Net_SMPP_Command_Deliver_Sm $sm)
+    {
+        $m = self::PDU('submit_sm', array(
+            // shortcode
+            'source_addr'         => $sm->destination_addr,
+            'source_addr_ton'     => NET_SMPP_TON_NWSPEC,
+            'source_addr_npi'     => NET_SMPP_NPI_UNK,
+
+            // 6281xxxx format
+            'destination_addr'    => $sm->source_addr,
+            'dest_addr_ton'       => NET_SMPP_TON_INTL,
+            'dest_addr_npi'       => NET_SMPP_NPI_ISDN,
+        ));
+        return $m;
+    }
 }
 ?>
